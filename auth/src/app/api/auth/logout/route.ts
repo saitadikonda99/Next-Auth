@@ -13,15 +13,15 @@ export const GET = async (req: NextRequest) => {
         console.log(JWT)
         
         // delete the refresh token from the database
-        if(JWT) {
+        if(JWT?.value !== '') {
             await pool.query(
                 `UPDATE users
                  SET refreshToken = null
                  WHERE refreshToken = ?
-                 `, [JWT.value]
+                 `, [JWT?.value]
             )
         } else {
-            return NextResponse.json({message: 'User not logged in'})
+            return NextResponse.json({message: 'User not logged in', status: 401})
         } 
 
         // delete the refresh token from the cookies

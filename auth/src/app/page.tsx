@@ -15,10 +15,9 @@ const Home = () => {
             const res = await axios.get('/api/auth/logout')
 
             if (res.status === 200) {
-                alert(res.data.message)
-                router.push('/')
+                router.push('/auth/login')
             }
-             
+            
         } catch (error) {
             console.log("")
         }
@@ -29,6 +28,7 @@ const Home = () => {
           <h1>Home</h1>
           <Link href='/auth/login'>Login</Link>
           <button onClick={handleLogout}>Logout</button>
+          <Link href='/Admin'>Admin</Link>
         </div>
    )
 }

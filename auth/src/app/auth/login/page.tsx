@@ -21,6 +21,10 @@ const Login = () => {
 	const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
 
+		if (!userData.username || !userData.password) {
+			alert('Please fill all fields')
+			return
+		}
 
 		try {
 			const response = await axios.post('/api/auth/login', userData, {
@@ -30,6 +34,8 @@ const Login = () => {
                 withCredentials: true,
               }
 			)
+
+			console.log(response)
 
 			if (response.status === 200) {
 				alert(response.data.message)

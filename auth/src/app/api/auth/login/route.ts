@@ -74,9 +74,14 @@ export const POST = async (req: NextRequest) => {
                 [refreshToken, Authenticated[0].username]
             )
 
-            // set the cookie with refresh token
-            cookies().set('jwt', refreshToken, { secure: false, httpOnly: false, sameSite: 'lax' })
+            // set the cookie max time to 10 seconds
 
+            // set the cookie with refresh token
+            cookies().set('jwt', refreshToken, {
+                sameSite: 'lax',
+                secure: false,
+                httpOnly: false,
+            })
 
             return NextResponse.json({ 
                 message: 'Authenticated',
