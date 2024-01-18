@@ -4,6 +4,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import './globals.css'
 
 const Home = () => {
 
@@ -25,10 +26,16 @@ const Home = () => {
 
   return (
         <div className="HomeComponent">
-          <h1>Home</h1>
-          <Link href='/auth/login'>Login</Link>
-          <button onClick={handleLogout}>Logout</button>
-          <Link href='/Admin'>Admin</Link>
+            <div className="HomeComponent-in">
+                <div className="Home-one">
+                    <h1>Next Auth</h1>
+                </div>
+                <div className="Home-two">
+                    <Link href='/Admin'>Admin</Link>
+                    <Link href='/auth/login'>Login</Link>
+                    <Link href='/' onClick={handleLogout}>Logout</Link>
+                </div>
+            </div>
         </div>
    )
 }

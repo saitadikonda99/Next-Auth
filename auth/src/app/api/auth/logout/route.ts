@@ -5,7 +5,6 @@ import { cookies } from 'next/headers'
 
 export const GET = async (req: NextRequest) => {
 
-
     try {
 
         const cookieStore = cookies()
